@@ -3,6 +3,14 @@
 > External ESP overlay for Roblox using memory reading and a transparent OpenGL overlay.  
 > Works via `ReadProcessMemory` — no injection, no DLL.
 
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?logo=windows)](https://www.microsoft.com/windows)
+[![License](https://img.shields.io/badge/License-Educational-red)](#-license)
+
+</div>
+
 ---
 
 ## ✨ Features
@@ -24,8 +32,8 @@
 ## 🖥️ Requirements
 
 - Windows 10 / 11 (64-bit)
-- Python **3.10+**
-- Roblox (RobloxPlayerBeta.exe) running
+- Python **3.10+** *(setup.bat installs it automatically if missing)*
+- Roblox (`RobloxPlayerBeta.exe`) running
 - **Run as Administrator** (required for memory reading)
 
 ### Python Dependencies
@@ -38,6 +46,8 @@ psutil
 requests
 ```
 
+> `setup.bat` checks and installs all missing dependencies automatically.
+
 ---
 
 ## 🚀 Quick Start
@@ -45,21 +55,24 @@ requests
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/youruser/omega.git
+git clone https://github.com/roqols/omega.git
 cd omega
 ```
 
-### 2. Run the setup (installs everything + registers `omega` command)
+### 2. Run the setup
 
-```bat
-setup.bat
+```
+Right-click setup.bat → Run as administrator
 ```
 
-> ⚠️ Run `setup.bat` as **Administrator** so it can register the system command.
+The setup will:
+- Install **Python 3.12** via `winget` if not present
+- Check and install all missing Python packages
+- Register the `omega` command system-wide
 
 ### 3. Launch from anywhere
 
-After setup, open any CMD window and type:
+Open any **new** CMD window and type:
 
 ```
 omega
@@ -69,11 +82,11 @@ omega
 
 ## ⚙️ Configuration
 
-All settings are at the top of `main.py`:
+All settings are at the top of `omega.py`:
 
 ```python
 # Toggle features
-ENABLE_ESP       = True
+ENABLE_ESP = True
 
 # Visual settings
 ESP_SHOW_BOX      = True
@@ -81,8 +94,8 @@ ESP_SHOW_TRACER   = True
 ESP_SHOW_NAME     = True
 ESP_SHOW_DISTANCE = True
 ESP_SHOW_HEALTH   = True
-ESP_CORNER_BOX    = False   # Corner-style box instead of full rectangle
-ESP_DYNAMIC_HEALTH_COLOR = True  # Health bar color changes with HP
+ESP_CORNER_BOX    = False              # Corner-style instead of full rectangle
+ESP_DYNAMIC_HEALTH_COLOR = True        # Health bar color changes with HP
 
 # Colors [R, G, B, A]
 ESP_BOX_COLOR      = [255, 255, 255, 255]
@@ -92,12 +105,12 @@ ESP_DISTANCE_COLOR = [255, 255, 255, 255]
 ESP_HEALTH_COLOR   = [0, 255, 0, 255]
 
 # Filters
-IGNORE_TEAM   = True   # Skip players on your team
-IGNORE_DEAD   = True   # Skip dead players
-MAX_DISTANCE  = 500    # Max distance in studs (0 = unlimited)
+IGNORE_TEAM  = True    # Skip players on your team
+IGNORE_DEAD  = True    # Skip dead players
+MAX_DISTANCE = 500     # Max render distance in studs
 
 # Debug
-DEBUG_MODE = True      # Show console logs
+DEBUG_MODE = True      # Show console with logs
 ```
 
 ---
@@ -114,10 +127,10 @@ DEBUG_MODE = True      # Show console logs
 ## 📂 Project Structure
 
 ```
-omega/
-├── main.py          # Main script (ESP logic + overlay)
-├── setup.bat        # Installer & system command register
-└── README.md        # This file
+pyOmega/
+├── omega.py      # Main script — ESP logic + overlay
+├── setup.bat     # Auto-installer + system command register
+└── README.md     # This file
 ```
 
 ---
@@ -142,22 +155,25 @@ ReadProcessMemory (Windows API)
      (always on top, click-through, frameless)
 ```
 
-Offsets are fetched remotely and versioned — they auto-update when Roblox updates.
+Offsets are fetched remotely and versioned — they update automatically when Roblox updates.
 
 ---
 
 ## ❓ FAQ
 
 **The overlay shows nothing / ESP is blank**  
-→ Make sure you're running as Administrator.  
-→ Wait a few seconds after launching Roblox before starting OMEGA.
+→ Run CMD as Administrator.  
+→ Wait a few seconds after launching Roblox before running `omega`.
 
 **`omega` command not found after setup**  
-→ Close and reopen CMD after running `setup.bat`.  
-→ Or re-run `setup.bat` as Administrator.
+→ Close the current CMD window and open a **new** one.  
+→ If still missing, re-run `setup.bat` as Administrator.
 
-**Offsets mismatch warning**  
-→ The remote server hasn't updated yet after a Roblox update. Wait a few hours and try again.
+**Offsets mismatch warning on startup**  
+→ Roblox updated and the remote offsets haven't caught up yet. Wait a few hours and try again.
+
+**Python was installed but `omega` still doesn't work**  
+→ Close CMD and open a new window so the updated PATH takes effect.
 
 ---
 
