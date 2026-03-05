@@ -32,21 +32,17 @@
 ## 🖥️ Requirements
 
 - Windows 10 / 11 (64-bit)
-- Python **3.10+** *(setup.bat installs it automatically if missing)*
+- Python **3.10+** *(setup.bat installs it automatically via winget if missing)*
 - Roblox (`RobloxPlayerBeta.exe`) running
 - **Run as Administrator** (required for memory reading)
 
 ### Python Dependencies
 
 ```
-PyQt5
-PyOpenGL
-numpy
-psutil
-requests
+PyQt5 · PyOpenGL · numpy · psutil · requests
 ```
 
-> `setup.bat` checks and installs all missing dependencies automatically.
+> `setup.bat` checks and installs all missing packages automatically.
 
 ---
 
@@ -65,17 +61,17 @@ cd omega
 Right-click setup.bat → Run as administrator
 ```
 
-The setup will:
+The setup will automatically:
 - Install **Python 3.12** via `winget` if not present
 - Check and install all missing Python packages
-- Register the `omega` command system-wide
+- Register the `stomega` command system-wide
 
 ### 3. Launch from anywhere
 
 Open any **new** CMD window and type:
 
 ```
-omega
+stomega
 ```
 
 ---
@@ -129,10 +125,24 @@ MAX_DISTANCE   = 500
 
 ```
 pyOmega/
-├── omega.py      # Main script — ESP logic + overlay
-├── setup.bat     # Auto-installer + system command register
-└── README.md     # This file
+├── omega.py        # Main script — ESP logic + overlay
+├── setup.bat       # Auto-installer + registers stomega command
+├── uninstall.bat   # Removes stomega command + launcher folder
+└── README.md       # This file
 ```
+
+---
+
+## 🗑️ Uninstall
+
+To fully remove the `stomega` command from your system:
+
+```
+Right-click uninstall.bat → Run as administrator
+```
+
+This removes the PATH entry and deletes `C:\omega-launcher`.  
+Your project files (`omega.py`, etc.) are **not** deleted.
 
 ---
 
@@ -164,17 +174,14 @@ Offsets are fetched remotely and versioned — they update automatically when Ro
 
 **The overlay shows nothing / ESP is blank**  
 → Run CMD as Administrator.  
-→ Wait a few seconds after launching Roblox before running `omega`.
+→ Wait a few seconds after Roblox loads before typing `stomega`.
 
-**`omega` command not found after setup**  
-→ Close the current CMD window and open a **new** one.  
+**`stomega` not found after setup**  
+→ Close the current CMD and open a **new** window — PATH only applies to new sessions.  
 → If still missing, re-run `setup.bat` as Administrator.
 
 **Offsets mismatch warning on startup**  
-→ Roblox updated and the remote offsets haven't caught up yet. Wait a few hours and try again.
-
-**Python was installed but `omega` still doesn't work**  
-→ Close CMD and open a new window so the updated PATH takes effect.
+→ Roblox updated and the remote offsets haven't caught up yet. Try again in a few hours.
 
 ---
 
