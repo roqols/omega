@@ -85,17 +85,9 @@ omega
 All settings are at the top of `omega.py`:
 
 ```python
-# Toggle features
+# Debug
+DEBUG_MODE = True
 ENABLE_ESP = True
-
-# Visual settings
-ESP_SHOW_BOX      = True
-ESP_SHOW_TRACER   = True
-ESP_SHOW_NAME     = True
-ESP_SHOW_DISTANCE = True
-ESP_SHOW_HEALTH   = True
-ESP_CORNER_BOX    = False              # Corner-style instead of full rectangle
-ESP_DYNAMIC_HEALTH_COLOR = True        # Health bar color changes with HP
 
 # Colors [R, G, B, A]
 ESP_BOX_COLOR      = [255, 255, 255, 255]
@@ -104,13 +96,22 @@ ESP_NAME_COLOR     = [255, 255, 255, 255]
 ESP_DISTANCE_COLOR = [255, 255, 255, 255]
 ESP_HEALTH_COLOR   = [0, 255, 0, 255]
 
-# Filters
-IGNORE_TEAM  = True    # Skip players on your team
-IGNORE_DEAD  = True    # Skip dead players
-MAX_DISTANCE = 500     # Max render distance in studs
+# Visual settings
+ESP_SHOW_BOX      = True
+ESP_SHOW_TRACER   = True
+ESP_SHOW_NAME     = True
+ESP_SHOW_DISTANCE = True
+ESP_SHOW_HEALTH   = True
+ESP_CORNER_BOX    = False
+ESP_DYNAMIC_HEALTH_COLOR = True
+ESP_TEXT_SIZE      = 14
+ESP_BOX_THICKNESS  = 2
 
-# Debug
-DEBUG_MODE = True      # Show console with logs
+# Filters
+IGNORE_TEAM    = True
+IGNORE_DEAD    = True
+HIDE_DISTANCE  = False
+MAX_DISTANCE   = 500
 ```
 
 ---
