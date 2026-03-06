@@ -17,7 +17,7 @@
 
 | Feature | Description |
 |---|---|
-| **ESP Box** | 2D bounding box around players (full or corner style) |
+| **ESP Box** | 2D/3D bounding box around players (full or corner style) |
 | **Tracer Lines** | Lines drawn from screen bottom to each player |
 | **Name Tags** | Displays the player's username above the box |
 | **Distance** | Shows distance in meters below the box |
