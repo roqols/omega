@@ -1,49 +1,59 @@
 @echo off
 setlocal EnableDelayedExpansion
 title OMEGA -- Uninstall
-color 0C
+color 0B
 
 echo.
-echo  =====================================
-echo       OMEGA -- Desinstalacao
-echo  =====================================
+echo =====================================
+echo        OMEGA -- Uninstall Wizard
+echo =====================================
 echo.
 
-:: Verificar admin
-net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo  [!] Execute como Administrador!
-    echo      Clique com botao direito em uninstall.bat
-    echo      e escolha "Executar como administrador".
+:: Verify administrator privileges using fsutil
+fsutil dirty query %systemdrive% >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [!] ERROR: Administrator privileges required!
+    echo     Right-click uninstall.bat and select:
+    echo     "Run as administrator"
+    echo.
     pause
     exit /b 1
 )
 
-:: Remover stomega do System32
-echo  [*] Removendo comando stomega...
+echo [*] Starting system cleanup...
+
+:: 1. Remove from System32
 if exist "C:\Windows\System32\stomega.bat" (
     del /f /q "C:\Windows\System32\stomega.bat"
-    echo  [+] stomega removido com sucesso.
-) else (
-    echo  [~] stomega nao encontrado. Nada a remover.
+    echo [+] 'stomega' command removed from System32.
 )
 
-:: Limpar instalacoes antigas de versoes anteriores
+:: 2. Remove from Windows directory (modern setup path)
+if exist "C:\Windows\stomega.bat" (
+    del /f /q "C:\Windows\stomega.bat"
+    echo [+] 'stomega' command removed from C:\Windows.
+)
+
+:: 3. Remove from SysWOW64 (legacy versions)
 if exist "C:\Windows\SysWOW64\stomega.bat" (
     del /f /q "C:\Windows\SysWOW64\stomega.bat"
-    echo  [+] Versao antiga removida de SysWOW64.
+    echo [+] 'stomega' command removed from SysWOW64.
 )
+
+:: 4. Remove legacy folders
 if exist "C:\omega-launcher" (
     rd /s /q "C:\omega-launcher"
-    echo  [+] Pasta legada C:\omega-launcher removida.
+    echo [+] Legacy folder C:\omega-launcher deleted.
 )
 
 echo.
-echo  =====================================
-echo   [OK] Desinstalacao concluida!
-echo  =====================================
+echo =====================================
+echo    [OK] UNINSTALL COMPLETED!
+echo =====================================
 echo.
-echo   Os arquivos do projeto NAO foram alterados.
+echo The .py and .bat files in this folder 
+echo were NOT deleted. Only the global 
+echo command was removed from the system.
 echo.
 pause
 endlocal
