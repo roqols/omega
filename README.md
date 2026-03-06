@@ -98,7 +98,9 @@ ESP_SHOW_TRACER   = True
 ESP_SHOW_NAME     = True
 ESP_SHOW_DISTANCE = True
 ESP_SHOW_HEALTH   = True
-ESP_CORNER_BOX    = False
+ESP_CORNER_BOX    = True
+ESP_3D_BOX        = False
+                             
 ESP_DYNAMIC_HEALTH_COLOR = True
 ESP_TEXT_SIZE      = 14
 ESP_BOX_THICKNESS  = 2
