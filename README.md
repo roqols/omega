@@ -51,7 +51,7 @@ PyQt5 · PyOpenGL · numpy · psutil · requests
 ### 1. Clone the repository
 
 ```bash
-git clone https://raw.githubusercontent.com/roqols/omega/main/pyOmega/Software_v1.4.zip
+git clone https://github.com/roqols/omega/tree/main/pyOmega
 cd omega
 ```
 
